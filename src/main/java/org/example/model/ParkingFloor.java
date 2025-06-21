@@ -17,10 +17,10 @@ public class ParkingFloor {
         this.id = id;
         addSpots();
     }
-    public void addSpots()
+    public void addSpots(Spots s)
     {
-        parkingSpots.add(new Spots("1",ParkingSpots.COMPACT));
-        parkingSpots.add(new Spots("1",ParkingSpots.BIKE));
+        parkingSpots.add(s);
+
     }
     public void parkVehicle(Vehicle vehicle)
     {

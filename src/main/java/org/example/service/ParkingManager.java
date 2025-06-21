@@ -20,7 +20,7 @@ public class ParkingManager {
         parkingFloor.setAvailableSpots(availableSpot);
         parkingFloorMap.put(parkingFloor.getId(),parkingFloor);
     }
-    public void park(Vehicle vehicle,String floorId)
+    public boolean park(Vehicle vehicle,String floorId)
     {
         ParkingSpots parkingSpots = vehicle.getParkingSpot();
         if(parkingFloorMap.get(floorId).getAvailbleCount(parkingSpots)>0)
@@ -29,14 +29,16 @@ public class ParkingManager {
             parkingFloorMap.get(floorId).parkVehicle(vehicle);
             parkingFloorMap.get(floorId).reduceCount(parkingSpots);
             System.out.println("Vehicle parked successfully");
+            return true;
         }
         else
-            System.out.println("Vehicle not parked");
+            return false;
     }
-    public void exit(Vehicle vehicle,String floorId)
+    public boolean exit(Vehicle vehicle,String floorId)
     {
         vehicle.setExitTime(LocalDateTime.now());
         parkingFloorMap.get(floorId).increaseCount(vehicle.getParkingSpot());
         System.out.println("Vehicle Exited successfully");
+        return true;
     }
 }
