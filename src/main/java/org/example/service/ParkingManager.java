@@ -26,6 +26,7 @@ public class ParkingManager {
         if(parkingFloorMap.get(floorId).getAvailbleCount(parkingSpots)>0)
         {
             vehicle.setEntryTime(LocalDateTime.now());
+            parkingFloorMap.get(floorId).parkVehicle(vehicle);
             parkingFloorMap.get(floorId).reduceCount(parkingSpots);
             System.out.println("Vehicle parked successfully");
         }

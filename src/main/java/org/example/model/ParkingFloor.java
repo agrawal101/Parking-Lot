@@ -15,8 +15,27 @@ public class ParkingFloor {
 
     public ParkingFloor(String id) {
         this.id = id;
+        addSpots();
     }
+    public void addSpots()
+    {
+        parkingSpots.add(new Spots("1",ParkingSpots.COMPACT));
+        parkingSpots.add(new Spots("1",ParkingSpots.BIKE));
+    }
+    public void parkVehicle(Vehicle vehicle)
+    {
+        for(Spots spots:parkingSpots)
+        {
+            if(vehicle.getParkingSpot()==spots.getSpotType())
+            {
+                Spots spots1 = new Spots("sp1",vehicle.getParkingSpot());
+                spots1.parkVehicle(vehicle);
+                break;
+            }
+            else throw new IllegalArgumentException("Vehile not Parked from Parking Floor");
+        }
 
+    }
     public int getAvailbleCount(ParkingSpots spot)
     {
         if(availableSpots.containsKey(spot))
