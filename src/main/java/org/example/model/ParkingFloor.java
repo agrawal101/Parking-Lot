@@ -15,7 +15,7 @@ public class ParkingFloor {
 
     public ParkingFloor(String id) {
         this.id = id;
-        addSpots();
+        //addSpots();
     }
     public void addSpots(Spots s)
     {
